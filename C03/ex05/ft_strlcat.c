@@ -47,13 +47,15 @@ Case 2: We have room to copy up to size - len_d - 1 characters:
 Copy while src[i] exists and we still have at least 1 byte left for '\0'.
 Write the terminator at dest[len_d + i].
 Return the length we tried to create: len_d + len_s.
-Goal: Safely concatenate like BSD strlcat and return the length it tried to build.
+Goal: Safely concatenate like BSD strlcat
+and return the length it tried to build.
 Inputs: dest, src, total buffer size (capacity of dest).
 Compute: len_d = min(index of NUL in dest, size), len_s = strlen(src).
 If size <= len_d: no copy; return size + len_s (signals truncation).
 Else: copy up to size - len_d - 1 chars from src, then NUL-terminate.
 Return: len_d + len_s (intended final length, regardless of truncation).
-Edge cases: size = 0; dest not NUL-terminated within size; tiny buffers; empty src.
+Edge cases: size = 0; dest not NUL-terminated within size;
+tiny buffers; empty src.
 Pass check if: both the post-string and return value match BSD strlcat.
 Quick tests:
 buf=12, dest="Hello", "World" → string "HelloWorld", return 10

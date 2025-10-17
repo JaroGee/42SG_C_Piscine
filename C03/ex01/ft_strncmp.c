@@ -41,6 +41,7 @@ Return: Like strncmp — difference at first mismatch within n; 0 if first n eq.
 Special: If n == 0, return 0.
 Stop when: mismatch, '\0' in either, or i == n.
 Edge cases: n=0; n smaller than first mismatch; early '\0' in one string.
-Type: use unsigned int for n and index; cast to (unsigned char) on return is ideal.
+Type: use unsigned int for n and index;
+cast to (unsigned char) on return is ideal.
 Quick tests: ("abc","abd",2)→0; ("abc","abd",3)→neg; ("ab","abc",5)→neg.
 */
