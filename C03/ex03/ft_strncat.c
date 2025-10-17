@@ -33,4 +33,10 @@ Start copying from src using j, but stop when:
 you hit src’s terminator, or
 you’ve copied nb characters (j < nb).
 Always place a '\0' after the last copied character.
-Return dest.*/
+Return dest.
+Goal: Append at most nb chars from src to dest; NUL-terminate; return dest.
+Copy rule: copy while src[j] and j < nb.
+Terminate: always write one final '\0'.
+Caller must: ensure dest has room for min(nb, len(src)) + 1.
+Edge cases: nb=0 (no change); nb > len(src) (acts like full strcat).
+Quick tests: ("Hello","World",3)→"HelloWor"; ("Hi","",5)→"Hi"; ("Hi"," there",0)→"Hi".*/
