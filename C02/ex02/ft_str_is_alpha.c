@@ -6,7 +6,7 @@
 /*   By: mgee <mgee@student.42singapore.sg>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/21 04:41:45 by mgee              +#+    #+#             */
-/*   Updated: 2025/10/21 05:23:48 by mgee             ###   ########.fr       */
+/*   Updated: 2025/10/21 05:32:56 by mgee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	ft_str_is_alpha(char *str)
 
 int	ft_str_is_alpha(char *str);
 
-static void	putchar_fd(char c)
+static void	putchair_fd(char c)
 {
 	write(1, &c, 1);
 }
