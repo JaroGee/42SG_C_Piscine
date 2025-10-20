@@ -6,7 +6,7 @@
 /*   By: mgee <mgee@student.42singapore.sg>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/21 03:24:32 by mgee              +#+    #+#             */
-/*   Updated: 2025/10/21 03:24:32 by mgee             ###   ########.fr       */
+/*   Updated: 2025/10/21 03:45:07 by mgee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,30 @@ char	*ft_strcpy(char *dest, char *src)
 	dest[i] = '\0';
 	return (dest);
 }
+
+/*
+#include <unistd.h>
+
+char	*ft_strcpy(char *dest, char *src);
+
+int	main(void)
+{
+	char	src[] = "42 is killing me!";
+	char	dest[50];
+	int		i;
+
+	ft_strcpy(dest, src);
+
+	i = 0;
+	while (dest[i] != '\0')
+	{
+		write(1, &dest[i], 1);
+		i++;
+	}
+	write(1, "\n", 1);
+	return (0);
+}
+*/
 
 /*char *ft_strcpy(char *dest, char *src)
 Function takes two pointers: where to copy to and where to copy from.
