@@ -6,7 +6,7 @@
 /*   By: mgee <mgee@student.42singapore.sg>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/21 03:57:08 by mgee              +#+    #+#             */
-/*   Updated: 2025/10/21 04:39:49 by mgee             ###   ########.fr       */
+/*   Updated: 2025/10/21 05:05:42 by mgee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ char	*ft_strncpy(char *dest, char *src, unsigned int n)
 		}
 	}
 	else
-		dest[n - 1] = '\0';
+		dest[n] = '\0';
 	return (dest);
 }
 
