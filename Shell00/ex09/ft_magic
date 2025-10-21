@@ -1,0 +1,6 @@
+41	string	42	42 file
+
+# 41: Offset (position in bytes). Starts counting from 0, so the 42nd byte = offset 41
+# string: Type of data to match (a text string)
+# 42: The value to look for
+# 42 file: The description file will print if it matches

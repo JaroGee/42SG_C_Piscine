@@ -1,0 +1,6 @@
+ls -mtp
+
+#ls: lists the content of the directory
+#-p: add bar (/) at the end of the director name
+#-t: Order by mod date, the latest first
+#-m: separates by commas

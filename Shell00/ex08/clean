@@ -1,0 +1,9 @@
+find . -type f \( -name '#*#' -o -name '*~' \) -print -delete
+
+# find .: Search in the current diretory and its subdireories
+# -type f: Search only files
+# -name '#*#': Search for files that start with "#" and end with "#"
+# -o: Logical operator: OR. If it find one of the conditions, the return is true
+# name '*~': Search for files only ending with "~"
+# -print: Show the files found
+# -delete: Delete the files found
