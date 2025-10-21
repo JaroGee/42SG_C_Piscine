@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgee <mgee@student.42singapore.sg>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/18 11:30:37 by mgee              +#+    #+#             */
-/*   Updated: 2025/10/18 11:30:37 by mgee             ###   ########.fr       */
+/*   Created: 2025/10/21 09:04:08 by mgee              +#+    #+#             */
+/*   Updated: 2025/10/21 09:17:10 by mgee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,48 +22,40 @@ static int	is_digit(char c)
 	return (c >= '0' && c <= '9');
 }
 
-/* Expect exactly 16 tokens, each '1'..'4' */
-int	parse_clues_4x4(const char *s, int out16[16])
+static const char	*skip_spaces(const char *s)
 {
-	int i;
-
-	i = 0;
-	while (*s && i < 16)
-	{
-		while (is_space(*s))
-			s++;
-		if (!*s)
-			break;
-		if (!is_digit(*s))
-			return (0);
-		if (*s < '1' || *s > '4')
-			return (0);
-		out16[i++] = *s - '0';
+	while (*s && is_space(*s))
 		s++;
-		while (is_space(*s))
-			s++;
-	}
-	if (i != 16)
-		return (0);
-	/* no trailing non-space garbage allowed */
-	while (is_space(*s))
-		s++;
-	return (*s == '\0');
+	return (s);
 }
 
-/*Purpose
-Reads the argument string (the 16 clues),
-validates it, and converts to integers.
-What it does
-Skips spaces and tabs.
-Accepts only digits '1'–'4'.
-Fills out16[16] array in this order:
-top[4], bottom[4], left[4], right[4]
-Returns 1 on success, 0 on failure.
-Edge cases
-Too few or too many clues → failure.
-Non-digit or out-of-range digit → failure.
-Trailing garbage after clues → failure.
-Usage
-Called from main() to parse command-line input.
-*/
+/* read exactly one token '1'..'4'; return -1 on error */
+static int	read_token_4x4(const char **ps)
+{
+	const char	*s;
+
+	s = skip_spaces(*ps);
+	if (!*s || !is_digit(*s) || *s < '1' || *s > '4')
+		return (-1);
+	*ps = s + 1;
+	return ((int)(*s - '0'));
+}
+
+int	parse_clues_4x4(const char *s, int out16[16])
+{
+	int	i;
+	int	val;
+
+	i = 0;
+	while (i < 16)
+	{
+		val = read_token_4x4(&s);
+		if (val == -1)
+			return (0);
+		out16[i] = val;
+		i++;
+		s = skip_spaces(s);
+	}
+	s = skip_spaces(s);
+	return (*s == '\0');
+}

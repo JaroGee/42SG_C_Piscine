@@ -6,7 +6,7 @@
 /*   By: mgee <mgee@student.42singapore.sg>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 11:29:55 by mgee              +#+    #+#             */
-/*   Updated: 2025/10/18 11:56:21 by mgee             ###   ########.fr       */
+/*   Updated: 2025/10/21 09:02:49 by mgee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 /* I/O */
 void	ft_putchar(char c);
 void	ft_putstr(const char *s);
-void	ft_putnbr(int n);          /* 1..9 safe */
+void	ft_putnbr(int n); /* 1..9 safe */
 void	print_grid(int grid[4][4]);
 
 /* Parsing */
@@ -37,9 +37,3 @@ int		check_col_views(int grid[4][4], int c, int top, int bottom);
 int		solve_cell(int grid[4][4], int clues[16], int pos);
 
 #endif
-
-/*Purpose
-This is your header file — it acts as a “bridge” between all the .c files.
-It declares the function prototypes so other files know they exist.
-Think of it as your table of contents for the project.
-*/
