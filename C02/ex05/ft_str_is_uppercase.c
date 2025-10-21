@@ -24,7 +24,7 @@ int	ft_str_is_uppercase(char *str)
 	return (1);
 }
 
-
+/*
 #include <unistd.h>
 
 int	ft_str_is_lowercase(char *str);
