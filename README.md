@@ -65,18 +65,35 @@ cc -Wall -Wextra -Werror ft_exercise.c
 ## Exam Tips  
 
 
-#### 1. Default login  
+#### 1. Exam Registration
+
+   - **Register** for the exam  
+      **&&**
+   - **Subscribe** to the event  
+   - Otherwise you won't be able to take the exam  
+   
+
+#### 2. Entering the terminal    
 
 
-   - Username: exam  
-     Password: exam  
-
-
-#### 2. Entering the exam shell  
-
-
-   - Log in using the default credentials, then follow the proctor’s instructions to access the exam shell.  
-
+   - Log into the terminal by entering  
+     ```yami
+     Username: exam
+     Password: exam
+     ```
+     
+   - To access exam shell in terminal  
+     ```bash
+     examshell
+     ```
+     
+   - The exam shell only accepts these commands:
+     ```yami
+     status
+     grademe
+     finished
+     ```
+     
 
 #### 3. Personal login  
 
@@ -111,7 +128,9 @@ cc -Wall -Wextra -Werror ft_exercise.c
 
    - The exam folder will usually be provided as a compressed file or mounted directory.  
 
-   - Extract or copy it into your home directory before starting.  
+   - Extract or copy it into your home directory before starting.
+
+   - Open another terminal or VScode to work on exam questions.
 
 
 #### 7. Question order  
@@ -129,7 +148,7 @@ cc -Wall -Wextra -Werror ft_exercise.c
 #### 9. Editor  
 
 
-   - VS Code is allowed, but it comes without plugins.  
+   - VSCode is allowed, but it comes without plugins.  
 
 
 #### 10. Compiling  
