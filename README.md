@@ -5,7 +5,9 @@ This repository contains my solutions and progress during the 42 Singapore Pisci
 
 It’s a work in progress and currently stops at **C03** (to be continued).
 
+
 ---
+
 
 ## About
 
@@ -19,7 +21,9 @@ The Piscine is a 26-day immersion in C programming, shell, and problem-solving.
 
 It’s tough, intense, and oddly addictive once you get into the flow.
 
+
 ---
+
 
 ## Repository Structure
 
@@ -40,12 +44,9 @@ Shell01
 
 README.md
 
----
-
-
-Each folder contains the exercise source files and my test mains.
 
 ---
+
 
 ## How to Compile
 
@@ -55,128 +56,130 @@ Use this command when testing your code:
 ```bash
 cc -Wall -Wextra -Werror ft_exercise.c
 ```
-These flags are strict but they’ll save you from subtle mistakes later.
+*These flags are strict but they’ll save you from subtle mistakes later.*
+
 
 ---
 
-## Exam Tips
+
+## Exam Tips  
 
 
-1. Default login
-   
-     Username: exam
-  
-     Password: exam
+#### 1. Default login  
 
 
-2. Entering the exam shell
-
-   
-     Log in using the default credentials,
-  
-     then follow the proctor’s instructions to access the exam shell.
+   - Username: exam  
+     Password: exam  
 
 
-3. Personal login
-
-   
-     You’ll be prompted for your own username and password.
-  
-     When typing your password, nothing will appear — no cursor movement or *.
-  
-     Just type it and press Enter.
-  
-
-4. Login window
+#### 2. Entering the exam shell  
 
 
-     You have 10 minutes to log in.
-  
-     If you miss it, you’ll need to log out and leave the exam.
-  
-
-5. Allowed items
+   - Log in using the default credentials, then follow the proctor’s instructions to access the exam shell.  
 
 
-     Only prescribed medication, a water bottle, and a pen are allowed.
-  
-     You’ll be given a blank sheet of paper and ear plugs.
-  
-     No electronic devices of any kind.
+#### 3. Personal login  
 
 
-6. Extracting the questions
+   - You’ll be prompted for your own username and password.  
+
+   - When typing your password, nothing will appear — no cursor movement or *.  
+
+   - Just type it and press Enter.  
 
 
-     The exam folder will usually be provided as a compressed file or mounted directory.
-  
-     Extract or copy it into your home directory before starting.
-  
-
-7. Question order
+#### 4. Login window  
 
 
-     You must complete and submit each question before moving on to the next.
-  
+   - You have 10 minutes to log in.  
 
-8. Manual
-
-
-     The terminal man pages are available and allowed.
+   - If you miss it, you’ll need to log out and leave the exam.  
 
 
-9. Editor
+#### 5. Allowed items  
 
 
-     VS Code is allowed but it comes without plugins.
-  
+   - Only prescribed medication, a water bottle, and a pen are allowed.  
 
-10. Compiling
+   - You’ll be given a blank sheet of paper and ear plugs.  
+
+   - No electronic devices of any kind.  
 
 
-  Always compile with:
-```bash
-cc -Wall -Werror -Wextra
-```
-These flags helped me catch errors early and pass several questions.
+#### 6. Extracting the questions  
+
+
+   - The exam folder will usually be provided as a compressed file or mounted directory.  
+
+   - Extract or copy it into your home directory before starting.  
+
+
+#### 7. Question order  
+
+
+   - You must complete and submit each question before moving on to the next.  
+
+
+#### 8. Manual  
+
+
+   - The terminal man pages are available and allowed.  
+
+
+#### 9. Editor  
+
+
+   - VS Code is allowed, but it comes without plugins.  
+
+
+#### 10. Compiling  
+
+
+   - Always compile with:  
+      ```bash
+      cc -Wall -Werror -Wextra
+      ```  
+      *These flags helped me catch errors early and pass several questions.*  
+
 
 ---
+
 
 ## Notes
 
 
-I included short test snippets as comments within each file, right below the solution.
+   - I included short test snippets as comments within each file, right below the solution.
 
-All you have to do is remove the denotation for comments (/**/),
+   - All you have to do is remove the denotation for comments (/**/), compile then run the program to see results
 
-compile then run the program to see results
+   - They’re simple examples meant to check basic logic before submission.
 
-They’re simple examples meant to check basic logic before submission.
+   - Norminette compliance varies across exercises — this repo isn’t perfect, but it’s honest.
 
-Norminette compliance varies across exercises — this repo isn’t perfect, but it’s honest.
 
 ---
+
 
 ## Author
 
 
-Name: Jaro Gee
+   - **Name:** Jaro Gee
 
-Piscine Run: 8
+   - **Piscine Run:** 8
 
-Based in: Singapore
+   - **Based in:** Singapore
 
-Currently learning C, surviving on coffee, and building momentum.
+   Currently learning C, surviving on coffee, and building momentum.
+
 
 ---
+
 
 ## Final Note
 
 
-This repo is a snapshot of my learning journey at 42 Singapore.
+   - This repo is a snapshot of my learning journey at 42 Singapore.
 
-It’s not meant to be a perfect reference.
+   - It’s not meant to be a perfect reference. Just a record of progress, mistakes, and lessons along the way.
 
-Just a record of progress, mistakes, and lessons along the way.
-
-More updates to come after C03.
+   - More updates to come after C03.
