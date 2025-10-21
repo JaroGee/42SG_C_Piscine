@@ -6,7 +6,7 @@
 /*   By: mgee <mgee@student.42singapore.sg>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 16:42:42 by mgee              #+#    #+#             */
-/*   Updated: 2025/10/16 22:38:26 by mgee             ###   ########.fr       */
+/*   Updated: 2025/10/21 22:48:44 by mgee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,25 @@ void	ft_swap(int *a, int *b)
 	*b = temp;
 }
 
-/* Goal: swap two integers.
-temp to hold the value of a while we swap the values;
-a spare cup; pour *a into temp, *b into *a, temp into *b.
-Without temp, you lose one value.*/
+/*
+#include <unistd.h>
+
+void	ft_swap(int *a, int *b);
+
+int	main(void)
+{
+	int  a = 1;
+	int  b = 2;
+	char c;
+
+	ft_swap(&a, &b);
+
+	c = a + '0';
+	write(1, &c, 1);
+	write(1, " ", 1);
+	c = b + '0';
+	write(1, &c, 1);
+	write(1, "\n", 1);
+	return (0);
+}
+*/
