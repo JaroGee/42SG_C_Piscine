@@ -53,8 +53,7 @@ Each folder contains the exercise source files and my test mains.
 Use this command when testing your code:
 
 ```bash
-gcc -Wall -Wextra -Werror ft_exercise.c main.c -o runme
-./runme
+cc -Wall -Wextra -Werror ft_exercise.c
 ```
 These flags are strict but they’ll save you from subtle mistakes later.
 
@@ -65,71 +64,71 @@ These flags are strict but they’ll save you from subtle mistakes later.
 
 1. Default login
    
-  Username: exam
+     Username: exam
   
-  Password: exam
+     Password: exam
 
 
 2. Entering the exam shell
 
    
-  Log in using the default credentials,
+     Log in using the default credentials,
   
-  then follow the proctor’s instructions to access the exam shell.
+     then follow the proctor’s instructions to access the exam shell.
 
 
 3. Personal login
 
    
-  You’ll be prompted for your own username and password.
+     You’ll be prompted for your own username and password.
   
-  When typing your password, nothing will appear — no cursor movement or *.
+     When typing your password, nothing will appear — no cursor movement or *.
   
-  Just type it and press Enter.
+     Just type it and press Enter.
   
 
 4. Login window
 
 
-  You have 10 minutes to log in.
+     You have 10 minutes to log in.
   
-  If you miss it, you’ll need to log out and leave the exam.
+     If you miss it, you’ll need to log out and leave the exam.
   
 
 5. Allowed items
 
 
-  Only prescribed medication, a water bottle, and a pen are allowed.
+     Only prescribed medication, a water bottle, and a pen are allowed.
   
-  You’ll be given a blank sheet of paper and ear plugs.
+     You’ll be given a blank sheet of paper and ear plugs.
   
-  No electronic devices of any kind.
+     No electronic devices of any kind.
 
 
 6. Extracting the questions
 
 
-  The exam folder will usually be provided as a compressed file or mounted directory.
+     The exam folder will usually be provided as a compressed file or mounted directory.
   
-  Extract or copy it into your home directory before starting.
+     Extract or copy it into your home directory before starting.
   
 
 7. Question order
 
 
-  You must complete and submit each question before moving on to the next.
+     You must complete and submit each question before moving on to the next.
   
 
 8. Manual
 
 
-  The terminal man pages are available and allowed.
+     The terminal man pages are available and allowed.
 
 
 9. Editor
 
 
-  VS Code is allowed but it comes without plugins (LOL).
+     VS Code is allowed but it comes without plugins.
   
 
 10. Compiling
