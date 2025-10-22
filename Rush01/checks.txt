@@ -152,7 +152,8 @@ Another attendance check, but for the vertical list.
 Why these checks matter (big picture)
 
 	•	We call these right after placing a number.
-	•	If a duplicate appears, we stop immediately — no need to waste time checking visibility or going deeper into recursion.
+	•	If a duplicate appears, we stop immediately
+		no need to waste time checking visibility or going deeper into recursion.
 	•	This saves tons of time because most wrong paths get cut off early.
 
 Simple story:
