@@ -1,0 +1,228 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   solve.txt                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mgee <mgee@student.42singapore.sg>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/10/22 08:47:06 by mgee              +#+    #+#             */
+/*   Updated: 2025/10/22 08:47:06 by mgee             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+Line by line explanation:
+
+#include "rush.h"
+/* clues: [0..3]=top, [4..7]=bottom, [8..11]=left, [12..15]=right */
+
+1. We import function prototypes and allowed headers.
+
+2. Comment = where each clue lives in the clues[16] array:
+    clues[0..3] → top of columns 0..3
+    clues[4..7] → bottom of columns 0..3
+    clues[8..11] → left of rows 0..3
+    clues[12..15] → right of rows 0..3
+
+Analogy: sticky notes around the grid.
+This tells us which post-it belongs to which side.
+
+---
+
+Helper 1 — check a row when it’s complete
+
+static int	row_complete_and_ok(int grid[4][4], int clues[16], int r, int c)
+{
+	int	left;
+	int	right;
+
+	if (c != 3)
+		return (1);
+	left = clues[8 + r];
+	right = clues[12 + r];
+	return (check_row_views(grid, r, left, right));
+}
+
+Goal: Only when we finish a row (i.e., we just filled column c == 3)
+do we check the row’s visibility clues.
+
+•	if (c != 3) return (1);
+The row isn’t full yet → “looks fine so far, keep going.”
+(Return 1 = “OK”.)
+
+•	When c == 3, pull the two row clues:
+    left = clues[8 + r]; (row r’s left clue)
+    right = clues[12 + r]; (row r’s right clue)
+
+•	check_row_views(...)
+    counts how many buildings you can see from left and right and compares to the clues. 
+    Returns 1 if it matches, 0 if not.
+
+Analogy: only judge the whole sentence after it’s complete.
+If the sentence (row) is unfinished, don’t grade grammar yet.
+
+---
+
+Helper 2 — check a column when it’s complete
+
+static int	col_complete_and_ok(int grid[4][4], int clues[16], int r, int c)
+{
+	int	top;
+	int	bottom;
+
+	if (r != 3)
+		return (1);
+	top = clues[c];
+	bottom = clues[4 + c];
+	return (check_col_views(grid, c, top, bottom));
+}
+
+Goal: Same idea for columns
+      only check visibility after placing the bottom cell (when r == 3).
+
+	•	If the column isn’t full yet → return 1 (“OK so far”).
+
+	•	Pull the two column clues:
+
+	•	top    = clues[c];
+
+	•	bottom = clues[4 + c];
+
+	•	check_col_views(...) validates top/bottom visibility counts.
+
+Analogy: judge the whole vertical stack only when all four blocks are placed.
+
+---
+
+Helper 3 — the gatekeeper before we recurse
+
+static int	can_place(int grid[4][4], int clues[16], int r, int c)
+{
+	if (row_has_dup(grid, r, c))
+		return (0);
+	if (col_has_dup(grid, c, r))
+		return (0);
+	if (!row_complete_and_ok(grid, clues, r, c))
+		return (0);
+	if (!col_complete_and_ok(grid, clues, r, c))
+		return (0);
+	return (1);
+}
+
+Purpose: Decide if the current value in grid[r][c] is legal so far.
+
+	•	Four quick checks (early pruning = go fast by rejecting bad paths early):
+        1.	row_has_dup → no repeat numbers in this row prefix.
+        2.	col_has_dup → no repeat numbers in this column prefix.
+        3.	If row just finished, visibility must match (left/right).
+        4.	If column just finished, visibility must match (top/bottom).
+
+	•	If any check fails → return (0) (not allowed).
+
+	•	If all pass → return (1) (allowed to continue).
+
+Analogy: bouncer at the door. If your ID (rules) fails any check, you don’t get in.
+
+---
+
+The backtracking engine — solve_cell
+
+int	solve_cell(int grid[4][4], int clues[16], int pos)
+{
+	int	r;
+	int	c;
+	int	v;
+
+	if (pos == 16)
+		return (1);
+	r = pos / 4;
+	c = pos % 4;
+	if (grid[r][c] != 0)
+		return (solve_cell(grid, clues, pos + 1));
+	v = 1;
+	while (v <= 4)
+	{
+		grid[r][c] = v;
+		if (can_place(grid, clues, r, c))
+			if (solve_cell(grid, clues, pos + 1))
+				return (1);
+		grid[r][c] = 0;
+		v++;
+	}
+	return (0);
+}
+
+Let’s go line by line like a story:
+
+	•	if (pos == 16) return (1);
+        There are 16 cells (0..15). 
+        If pos is 16, we filled them all solution found.
+        Tell our caller “yes!” (return 1).
+
+	•	r = pos / 4; c = pos % 4;
+        Convert a single number pos into row/column:
+
+            •	pos: 0  1  2  3 | 4  5  6  7 | 8 …
+            •	r = row index (0..3), c = column index (0..3)
+
+	•	if (grid[r][c] != 0) return solve_cell(..., pos + 1);
+        (We don’t prefill any cells in this Rush, but this is defensive.)
+        If the cell already had a value, just skip it and go to the next.
+
+	•	v = 1; while (v <= 4) { ... v++; }
+        Try all possible heights 1, 2, 3, 4 for this cell.
+
+	•	grid[r][c] = v;
+        Tentatively put v in the cell.
+
+	•	if (can_place(...)) if (solve_cell(..., pos + 1)) return (1);
+
+            •	Ask the bouncer: “Is this placement still legal?”
+            •	If yes, recurse to the next cell.
+            •	If the deeper call finds a full solution, bubble up success (return 1).
+
+	•	grid[r][c] = 0;
+        If placing v doesn’t lead to a solution,
+        undo (backtrack), and try the next v.
+
+	•	If we tried all v = 1..4 and none worked,
+        return (0) — this path is a dead end, go back further.
+
+Analogy:
+You’re trying keys (1..4) in a lock. 
+If the door down the hall never opens, 
+you come back, remove the key, and try the next one.
+
+---
+
+Common eval questions (with short answers)
+
+	•	Q: Why only check visibility when a row/column is complete?
+        A: Because the visibility number depends on all four heights. 
+           Checking early would be complicated and unnecessary;
+           this approach is simple and still fast for 4×4.
+
+	•	Q: What’s backtracking in one sentence?
+        A: Try a choice; if it leads to a dead end,
+           undo it and try the next choice.
+
+	•	Q: How do you map clues to rows/columns?
+        A: top[c]=clues[c], bottom[c]=clues[4+c],
+           left[r]=clues[8+r], right[r]=clues[12+r].
+
+	•	Q: How do you avoid duplicates?
+        A: After placing a number,
+           we call row_has_dup and 
+           col_has_dup on the partial row/column.
+           If duplicate → reject immediately.
+
+	•	Q: What do you print if there’s no solution or input is invalid?
+        A: Error followed by a newline.
+
+⸻
+
+Mental model recap
+	•	solve_cell walks through the grid cell by cell.
+	•	At each cell, it tries 1..4, asks “is this still legal?”, and goes deeper.
+	•	If the future fails, it undoes and tries another number.
+	•	Row/column visibility is checked only when a line is finished.
+	•	When all 16 cells are filled legally → done.

@@ -1,0 +1,89 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.txt                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mgee <mgee@student.42singapore.sg>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/10/22 09:31:10 by mgee              +#+    #+#             */
+/*   Updated: 2025/10/22 09:31:10 by mgee             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+Line by line explanation:
+
+Why this file exists
+
+main.c is the entry point.
+
+It:
+1.	checks the input,
+2) prepares the board,
+3) calls the solver,
+4) prints the result or Error.
+
+---
+
+#include "rush.h"
+
+Pull in the function list so we can call them.
+
+---
+
+static void init_grid(int grid[4][4]) { ... }
+
+A small helper to clear the board (fill with zeros).
+	•	int r; int c; → row/column counters.
+	•	Two while loops: walk every cell, set grid[r][c] = 0;.
+    
+Analogy: wipe the whiteboard before starting a new puzzle.
+
+---
+
+int main(int argc, char **argv)
+
+Program entry
+
+---
+
+int clues[16]; int grid[4][4];
+
+Storage for the 16 clues and the 4×4 board.
+
+---
+
+if (argc != 2 || !parse_clues_4x4(argv[1], clues)) { ft_putstr("Error\n"); return (0); }
+
+Input contract:
+	•	There must be exactly one argument (the long string of 16 numbers).
+
+	•	That string must successfully parse into 16 valid clues (1..4 each).
+        If not, print Error and stop.
+
+---
+
+init_grid(grid);
+
+Set the board to empty.
+
+---
+
+if (solve_cell(grid, clues, 0)) print_grid(grid); else ft_putstr("Error\n");
+
+Try to solve starting at cell position 0.
+
+	•	If the solver finds a valid arrangement → print the board.
+	•	If no arrangement works → print Error.
+
+---
+
+return (0);
+
+End the program.
+
+
+Analogy:
+The manager (main) checks tickets (parse_clues_4x4),
+sets up the stage (init_grid),
+lets the performer (solve_cell) do the act,
+and then announces the result (print_grid or Error).
