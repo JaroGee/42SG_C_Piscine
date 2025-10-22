@@ -116,7 +116,7 @@ cc -Wall -Wextra -Werror ft_exercise.c
 #### 4. Login window  
 
 
-   - You have 10 minutes to log in.  
+   - You have **10 minutes** to log in.  
 
    - If you miss it, you’ll need to log out and leave the exam.  
 
@@ -134,9 +134,10 @@ cc -Wall -Wextra -Werror ft_exercise.c
 #### 6. Extracting the questions  
 
 
-   - The exam folder will usually be provided as a compressed file or mounted directory.  
-
-   - Extract or copy it into your home directory before starting.
+   - When you access the exam shell, you’ll see brief on-screen instructions
+     and a folder for the current question you’re attempting.
+   
+   - Each question appears one at a time — complete and submit it before moving on to the next.
 
    - Open another terminal or VScode to work on exam questions.
 
@@ -144,7 +145,9 @@ cc -Wall -Wextra -Werror ft_exercise.c
 #### 7. Question order  
 
 
-   - You must complete and submit each question before moving on to the next.  
+   - You must complete and pass each question in order before moving on to the next.
+
+   - Getting stuck on one question means you can’t proceed to any others until that one is solved.
 
 
 #### 8. Manual  
@@ -208,5 +211,3 @@ cc -Wall -Wextra -Werror ft_exercise.c
    - This repo is a snapshot of my learning journey at 42 Singapore.
 
    - It’s not meant to be a perfect reference. Just a record of progress, mistakes, and lessons along the way.
-
-   - More updates to come after C03.
