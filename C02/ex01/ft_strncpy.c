@@ -6,7 +6,7 @@
 /*   By: mgee <mgee@student.42singapore.sg>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/21 03:57:08 by mgee              +#+    #+#             */
-/*   Updated: 2025/10/21 05:14:54 by mgee             ###   ########.fr       */
+/*   Updated: 2025/10/22 17:55:09 by mgee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,16 @@ char	*ft_strncpy(char *dest, char *src, unsigned int n)
 	unsigned int	i;
 
 	i = 0;
-	while (src[i] != '\0' && i < n)
+	while (i < n && src[i] != '\0')
 	{
 		dest[i] = src[i];
 		i++;
 	}
-	if (i < n)
+	while (i < n)
 	{
-		while (i < n)
-		{
-			dest[i] = '\0';
-			i++;
-		}
+		dest[i] = '\0';
+		i++;
 	}
-	else
-		dest[n] = '\0';
 	return (dest);
 }
 
