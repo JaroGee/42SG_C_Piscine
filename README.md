@@ -27,7 +27,6 @@ It’s tough, intense, and oddly addictive once you get into the flow.
 
 
 ```
-yami
 ├── Shell00/
 ├── Shell01/
 │
@@ -51,7 +50,7 @@ yami
 ├── Rush02/
 │
 └── README.md
-'''  
+```  
 
 
 ---
