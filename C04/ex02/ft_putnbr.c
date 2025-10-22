@@ -6,7 +6,7 @@
 /*   By: mgee <mgee@student.42singapore.sg>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 18:39:40 by mgee              +#+    #+#             */
-/*   Updated: 2025/10/23 00:09:54 by mgee             ###   ########.fr       */
+/*   Updated: 2025/10/23 01:35:51 by mgee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	ft_putnbr(int nb)
 	ft_putchar(nb % 10 + '0');
 }
 
+/*
 int	main(void)
 {
 	ft_putnbr(42);
@@ -44,3 +45,4 @@ int	main(void)
 	write(1, "\n", 1);
 	return (0);
 }
+*/
