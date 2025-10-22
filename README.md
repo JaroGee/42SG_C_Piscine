@@ -3,8 +3,6 @@
 
 This repository contains my solutions and progress during the 42 Singapore Piscine.
 
-It’s a work in progress and currently stops at **C03** (to be continued).
-
 
 ---
 
@@ -25,48 +23,35 @@ It’s tough, intense, and oddly addictive once you get into the flow.
 ---
 
 
-## Repository Structure
+## Repository Structure  
 
 
-C00
-
-C01
-
-C02
-
-C03
-
-C04
-
-C05
-
-C06
-
-C07
-
-C08
-
-C09
-
-C10
-
-C11
-
-C12
-
-C13
-
-Rush00
-
-Rush01
-
-Rush02
-
-Shell00
-
-Shell01
-
-README.md
+```
+yami
+├── Shell00/
+├── Shell01/
+│
+├── C00/
+├── C01/
+├── C02/
+├── C03/
+├── C04/
+├── C05/
+├── C06/
+├── C07/
+├── C08/
+├── C09/
+├── C10/
+├── C11/
+├── C12/
+├── C13/
+│
+├── Rush00/
+├── Rush01/
+├── Rush02/
+│
+└── README.md
+'''  
 
 
 ---
