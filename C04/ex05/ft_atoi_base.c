@@ -6,7 +6,7 @@
 /*   By: mgee <mgee@student.42singapore.sg>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 18:41:07 by mgee              +#+    #+#             */
-/*   Updated: 2025/10/22 18:43:47 by mgee             ###   ########.fr       */
+/*   Updated: 2025/10/23 00:07:58 by mgee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,7 @@ int	ft_atoi_base(char *str, char *base)
 }
 
 /*
+#include <unistd.h>
 #include <stdio.h>
 
 int	ft_atoi_base(char *str, char *base);
