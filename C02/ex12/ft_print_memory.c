@@ -6,7 +6,7 @@
 /*   By: mgee <mgee@student.42singapore.sg>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/21 05:22:16 by mgee              +#+    #+#             */
-/*   Updated: 2025/10/21 08:34:37 by mgee             ###   ########.fr       */
+/*   Updated: 2025/10/22 22:05:30 by mgee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,13 +101,11 @@ void	*ft_print_memory(void *addr, unsigned int size)
 }
 
 /*
-#include <unistd.h>
-void	*ft_print_memory(void *addr, unsigned int size);
+void *ft_print_memory(void *addr, unsigned int size);
 
-int	main(void)
+int main(void)
 {
-	char	data[] = "Bonjour les aminches\n\nc  est fou\ttout ce qu on "
-		"peut faire avec...\n\n\nlol.lol ";
+	char data[] = "Hello, World!\nThis is a test of ft_print_memory.\n";
 	ft_print_memory(data, sizeof(data) - 1);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: mgee <mgee@student.42singapore.sg>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/21 05:22:13 by mgee              +#+    #+#             */
-/*   Updated: 2025/10/21 08:22:36 by mgee             ###   ########.fr       */
+/*   Updated: 2025/10/22 16:58:32 by mgee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size);
 void	putstr(char *s)
 {
     int i=0;
+
     while(s[i])
     {
         write(1,&s[i],1);
