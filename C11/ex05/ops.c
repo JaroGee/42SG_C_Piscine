@@ -1,27 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_foreach.c                                       :+:      :+:    :+:   */
+/*   ops.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgee <mgee@student.42singapore.sg>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/25 01:43:18 by mgee              +#+    #+#             */
-/*   Updated: 2025/10/25 03:49:27 by mgee             ###   ########.fr       */
+/*   Created: 2025/10/25 03:54:49 by mgee              +#+    #+#             */
+/*   Updated: 2025/10/25 03:54:56 by mgee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/* ************************************************************************** */
-/*  ft_foreach.c                                                              */
-/* ************************************************************************** */
+#include "do_op.h"
 
-void	ft_foreach(int *tab, int length, void (*f)(int))
+int	op_add(int a, int b)
 {
-	int	i;
+	return (a + b);
+}
 
-	i = 0;
-	while (i < length)
-	{
-		f(tab[i]);
-		i++;
-	}
+int	op_sub(int a, int b)
+{
+	return (a - b);
+}
+
+int	op_mul(int a, int b)
+{
+	return (a * b);
+}
+
+int	op_div(int a, int b)
+{
+	return (a / b);
+}
+
+int	op_mod(int a, int b)
+{
+	return (a % b);
 }

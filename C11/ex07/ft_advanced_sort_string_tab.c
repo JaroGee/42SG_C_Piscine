@@ -6,7 +6,34 @@
 /*   By: mgee <mgee@student.42singapore.sg>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/25 01:43:35 by mgee              +#+    #+#             */
-/*   Updated: 2025/10/25 01:46:08 by mgee             ###   ########.fr       */
+/*   Updated: 2025/10/25 03:58:04 by mgee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+/* ************************************************************************** */
+/*  ft_advanced_sort_string_tab.c                                             */
+/* ************************************************************************** */
+
+void	ft_advanced_sort_string_tab(char **tab, int (*cmp)(char *, char *))
+{
+	int		i;
+	int		j;
+	char	*tmp;
+
+	if (!tab || !cmp)
+		return ;
+	i = 0;
+	while (tab[i])
+	{
+		j = i + 1;
+		while (tab[j])
+		{
+			if (cmp(tab[i], tab[j]) > 0)
+			{
+				tmp = tab[i]; tab[i] = tab[j]; tab[j] = tmp;
+			}
+			j++;
+		}
+		i++;
+	}
+}

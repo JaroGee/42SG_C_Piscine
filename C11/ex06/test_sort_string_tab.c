@@ -1,27 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_foreach.c                                       :+:      :+:    :+:   */
+/*   test_sort_string_tab.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgee <mgee@student.42singapore.sg>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/25 01:43:18 by mgee              +#+    #+#             */
-/*   Updated: 2025/10/25 03:49:27 by mgee             ###   ########.fr       */
+/*   Created: 2025/10/25 03:57:52 by mgee              +#+    #+#             */
+/*   Updated: 2025/10/25 03:57:52 by mgee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/* ************************************************************************** */
-/*  ft_foreach.c                                                              */
-/* ************************************************************************** */
+#include <unistd.h>
+void	ft_sort_string_tab(char **tab);
+void	putstr(char *s){ while(*s) write(1,s++,1); }
 
-void	ft_foreach(int *tab, int length, void (*f)(int))
-{
-	int	i;
-
-	i = 0;
-	while (i < length)
-	{
-		f(tab[i]);
-		i++;
-	}
+int main(void){
+	char *t[]={"banana","apple","apricot","abc","z",0};
+	ft_sort_string_tab(t);
+	for(int i=0;t[i];i++){ putstr(t[i]); write(1,"\n",1); }
 }
