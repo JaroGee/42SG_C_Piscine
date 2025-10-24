@@ -6,7 +6,7 @@
 /*   By: mgee <mgee@student.42singapore.sg>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 18:40:39 by mgee              +#+    #+#             */
-/*   Updated: 2025/10/23 21:06:03 by mgee             ###   ########.fr       */
+/*   Updated: 2025/10/24 15:22:32 by mgee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,9 @@ void	ft_putnbr_base(int nbr, char *base)
 }
 
 /*
+
+#include <unistd.h>
+
 void	ft_putnbr_base(int nbr, char *base);
 
 int	main(void)
