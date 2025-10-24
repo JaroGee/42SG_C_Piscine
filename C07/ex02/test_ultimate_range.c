@@ -1,36 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ultimate_range.c                                :+:      :+:    :+:   */
+/*   test_ultimate_range.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgee <mgee@student.42singapore.sg>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/25 01:42:33 by mgee              +#+    #+#             */
-/*   Updated: 2025/10/25 02:07:51 by mgee             ###   ########.fr       */
+/*   Created: 2025/10/25 02:12:39 by mgee              +#+    #+#             */
+/*   Updated: 2025/10/25 02:12:39 by mgee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include <stdlib.h>
 
-int	ft_ultimate_range(int **range, int min, int max)
-{
-	int	size;
-	int	i;
+int	ft_ultimate_range(int **range, int min, int max);
 
-	if (min >= max)
-	{
-		*range = 0;
-		return (0);
-	}
-	size = max - min;
-	*range = (int *)malloc(sizeof(int) * size);
-	if (!*range)
-		return (-1);
+int	main(void)
+{
+	int *p;
+	int n;
+	int i;
+
+	n = ft_ultimate_range(&p, 5, 9);
+	printf("n=%d -> ", n);
 	i = 0;
-	while (i < size)
+	while (i < n)
 	{
-		(*range)[i] = min + i;
+		printf("%d ", p[i]);
 		i++;
 	}
-	return (size);
+	printf("\n");
+	free(p);
+	return (0);
 }
