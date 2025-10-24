@@ -1,30 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_convert_base.c                                  :+:      :+:    :+:   */
+/*   test_convert.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgee <mgee@student.42singapore.sg>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/25 01:42:37 by mgee              +#+    #+#             */
-/*   Updated: 2025/10/25 02:22:08 by mgee             ###   ########.fr       */
+/*   Created: 2025/10/25 02:15:22 by mgee              +#+    #+#             */
+/*   Updated: 2025/10/25 02:15:22 by mgee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <stdio.h>
 #include <stdlib.h>
 
-int		ft_base_len(char *base);
-long	ft_atoi_base(char *str, char *base, int blen);
-char	*ft_itoa_base(long n, char *base, int blen);
+char	*ft_convert_base(char *nbr, char *base_from, char *base_to);
 
-char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
+int	main(void)
 {
-	int		blf;
-	int		blt;
-	long	val;
+	char *s;
 
-	blf = ft_base_len(base_from);
-	blt = ft_base_len(base_to);
-	if (blf == 0 || blt == 0)
-		return (0);
-	val = ft_atoi_base(nbr, base_from, blf);
-	return (ft_itoa_base(val, base_to, blt));
+	s = ft_convert_base("   -1A3", "0123456789ABCDEF", "01");
+	printf("%s\n", s);
+	free(s);
+	return (0);
 }
