@@ -1,21 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgee <mgee@student.42singapore.sg>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/25 01:42:57 by mgee              +#+    #+#             */
-/*   Updated: 2025/10/25 03:10:30 by mgee             ###   ########.fr       */
+/*   Created: 2025/10/25 03:30:04 by mgee              +#+    #+#             */
+/*   Updated: 2025/10/25 03:30:04 by mgee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strcmp(char *s1, char *s2)
+#include <unistd.h>
+
+void	ft_putstr(char *str)
 {
-	while (*s1 && *s1 == *s2)
-	{
-		s1++;
-		s2++;
-	}
-	return ((unsigned char)*s1 - (unsigned char)*s2);
+	int	i;
+
+	i = 0;
+	while (str && str[i])
+		i++;
+	if (str)
+		write(1, str, i);
 }

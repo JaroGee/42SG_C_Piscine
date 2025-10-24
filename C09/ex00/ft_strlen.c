@@ -6,7 +6,16 @@
 /*   By: mgee <mgee@student.42singapore.sg>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/25 01:42:59 by mgee              +#+    #+#             */
-/*   Updated: 2025/10/25 01:46:08 by mgee             ###   ########.fr       */
+/*   Updated: 2025/10/25 03:10:20 by mgee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+int	ft_strlen(char *str)
+{
+	int	len;
+
+	len = 0;
+	while (str && str[len])
+		len++;
+	return (len);
+}

@@ -6,7 +6,19 @@
 /*   By: mgee <mgee@student.42singapore.sg>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/25 01:42:56 by mgee              +#+    #+#             */
-/*   Updated: 2025/10/25 01:46:08 by mgee             ###   ########.fr       */
+/*   Updated: 2025/10/25 03:09:49 by mgee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <unistd.h>
+
+void	ft_putstr(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str && str[i])
+		i++;
+	if (str)
+		write(1, str, i);
+}
