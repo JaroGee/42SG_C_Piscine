@@ -1,18 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_abs.h                                           :+:      :+:    :+:   */
+/*   test_abs.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgee <mgee@student.42singapore.sg>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/25 01:42:47 by mgee              +#+    #+#             */
-/*   Updated: 2025/10/25 02:43:36 by mgee             ###   ########.fr       */
+/*   Created: 2025/10/25 02:37:54 by mgee              +#+    #+#             */
+/*   Updated: 2025/10/25 02:37:57 by mgee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_ABS_H
-# define FT_ABS_H
+// ft_abs.c
+#include "ft_abs.h"
 
-int	ft_abs(int value);
-
-#endif
+int	ft_abs(int value)
+{
+	if (value < 0)
+		return (-value);
+	return (value);
+}

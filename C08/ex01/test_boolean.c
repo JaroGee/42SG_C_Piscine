@@ -1,18 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_abs.h                                           :+:      :+:    :+:   */
+/*   test_boolean.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgee <mgee@student.42singapore.sg>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/25 01:42:47 by mgee              +#+    #+#             */
-/*   Updated: 2025/10/25 02:43:36 by mgee             ###   ########.fr       */
+/*   Created: 2025/10/25 02:36:52 by mgee              +#+    #+#             */
+/*   Updated: 2025/10/25 02:36:56 by mgee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_ABS_H
-# define FT_ABS_H
+// ft_is_even.c
+#include "ft_boolean.h"
 
-int	ft_abs(int value);
-
-#endif
+t_bool	ft_is_even(int nbr)
+{
+	if ((nbr % 2) == 0)
+		return (TRUE);
+	return (FALSE);
+}

@@ -1,18 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_abs.h                                           :+:      :+:    :+:   */
+/*   ft_stock_str.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgee <mgee@student.42singapore.sg>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/25 01:42:47 by mgee              +#+    #+#             */
-/*   Updated: 2025/10/25 02:43:36 by mgee             ###   ########.fr       */
+/*   Created: 2025/10/25 02:39:57 by mgee              +#+    #+#             */
+/*   Updated: 2025/10/25 02:40:42 by mgee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_ABS_H
-# define FT_ABS_H
+#ifndef FT_STOCK_STR_H
+# define FT_STOCK_STR_H
 
-int	ft_abs(int value);
+typedef struct s_stock_str
+{
+	int		size;
+	char	*str;
+	char	*copy;
+}	t_stock_str;
+
+/* creators / printers used by later exercises */
+struct s_stock_str	*ft_strs_to_tab(int ac, char **av);
+void				ft_show_tab(struct s_stock_str *par);
 
 #endif

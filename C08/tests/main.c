@@ -1,18 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_abs.h                                           :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgee <mgee@student.42singapore.sg>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/25 01:42:47 by mgee              +#+    #+#             */
-/*   Updated: 2025/10/25 02:43:36 by mgee             ###   ########.fr       */
+/*   Created: 2025/10/25 03:00:29 by mgee              +#+    #+#             */
+/*   Updated: 2025/10/25 03:00:29 by mgee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_ABS_H
-# define FT_ABS_H
+#include <stdlib.h>
+#include "ft_stock_str.h"
 
-int	ft_abs(int value);
+int	main(int ac, char **av)
+{
+	if (ac <= 1)
+		return (0);
 
-#endif
+	t_stock_str	*tab = ft_strs_to_tab(ac - 1, av + 1);
+	if (!tab)
+		return (1);
+
+	ft_show_tab(tab);
+
+	for (int i = 0; tab[i].str; i++)
+		free(tab[i].copy);
+	free(tab);
+	return (0);
+}

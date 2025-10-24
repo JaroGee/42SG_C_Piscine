@@ -6,7 +6,17 @@
 /*   By: mgee <mgee@student.42singapore.sg>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/25 01:42:49 by mgee              +#+    #+#             */
-/*   Updated: 2025/10/25 01:46:08 by mgee             ###   ########.fr       */
+/*   Updated: 2025/10/25 02:38:06 by mgee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef FT_POINT_H
+# define FT_POINT_H
+
+typedef struct s_point
+{
+	int	x;
+	int	y;
+}	t_point;
+
+#endif

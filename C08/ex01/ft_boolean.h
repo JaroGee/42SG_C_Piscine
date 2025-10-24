@@ -6,7 +6,23 @@
 /*   By: mgee <mgee@student.42singapore.sg>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/25 01:42:45 by mgee              +#+    #+#             */
-/*   Updated: 2025/10/25 01:46:08 by mgee             ###   ########.fr       */
+/*   Updated: 2025/10/25 02:36:29 by mgee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef FT_BOOLEAN_H
+# define FT_BOOLEAN_H
+
+# include <unistd.h>
+
+typedef int		t_bool;
+
+# define TRUE     1
+# define FALSE    0
+# define EVEN_MSG "I have an even number of arguments.\n"
+# define ODD_MSG  "I have an odd number of arguments.\n"
+# define SUCCESS  0
+
+t_bool	ft_is_even(int nbr);
+
+#endif
