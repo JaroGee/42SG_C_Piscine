@@ -1,17 +1,14 @@
-NAME=ft_cat
-SRC=main.c
-CC=cc
-CFLAGS=-Wall -Wextra -Werror
+NAME = ft_cat
+SRC  = main.c cat.c
+OBJ  = $(SRC:.c=.o)
+CC   = cc
+CFLAGS = -Wall -Wextra -Werror
 
 all: $(NAME)
-
-$(NAME): $(SRC)
-	$(CC) $(CFLAGS) $(SRC) -o $(NAME)
-
+$(NAME): $(OBJ)
+	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
 clean:
-	@true
-
+	rm -f $(OBJ)
 fclean: clean
 	rm -f $(NAME)
-
 re: fclean all

@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   display.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgee <mgee@student.42singapore.sg>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/25 03:35:01 by mgee              +#+    #+#             */
-/*   Updated: 2025/10/25 09:08:39 by mgee             ###   ########.fr       */
+/*   Created: 2025/10/25 09:09:04 by mgee              +#+    #+#             */
+/*   Updated: 2025/10/25 09:09:04 by mgee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "display.h"
+#ifndef DISPLAY_H
+# define DISPLAY_H
 
-int	main(int argc, char **argv)
-{
-	int	ret;
+# include <unistd.h>
+# include <fcntl.h>
 
-	if (validate_args(argc))
-		return (1);
-	ret = display_file(argv[1]);
-	return (ret);
-}
+int		validate_args(int argc);
+int		display_file(const char *path);
+
+#endif

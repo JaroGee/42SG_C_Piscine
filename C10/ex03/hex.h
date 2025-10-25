@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   hex.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgee <mgee@student.42singapore.sg>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/25 03:35:01 by mgee              +#+    #+#             */
-/*   Updated: 2025/10/25 09:08:39 by mgee             ###   ########.fr       */
+/*   Created: 2025/10/25 09:12:07 by mgee              +#+    #+#             */
+/*   Updated: 2025/10/25 09:12:07 by mgee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "display.h"
+#ifndef HEX_H
+# define HEX_H
 
-int	main(int argc, char **argv)
-{
-	int	ret;
+# include <unistd.h>
+# include <fcntl.h>
+# include <errno.h>
+# include <string.h>
+# include <libgen.h>
 
-	if (validate_args(argc))
-		return (1);
-	ret = display_file(argv[1]);
-	return (ret);
-}
+void	put_hex8(unsigned long v);
+void	put_hex2(unsigned char b);
+void	print_line(unsigned long base, unsigned char *buf, int len);
+int		dump_fd(int fd, unsigned long *off);
+void	print_err(const char *prog, const char *path);
+
+#endif
