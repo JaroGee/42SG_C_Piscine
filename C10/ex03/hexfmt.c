@@ -6,7 +6,7 @@
 /*   By: mgee <mgee@student.42singapore.sg>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/25 09:12:21 by mgee              +#+    #+#             */
-/*   Updated: 2025/10/25 09:12:21 by mgee             ###   ########.fr       */
+/*   Updated: 2025/10/25 09:37:35 by mgee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,10 @@ void	put_hex2(unsigned char b)
 	write(1, out, 2);
 }
 
-void	print_line(unsigned long base, unsigned char *buf, int len)
+static void	print_hex_cols(const unsigned char *buf, int len)
 {
 	int	i;
 
-	put_hex8(base);
-	write(1, "  ", 2);
 	i = 0;
 	while (i < 16)
 	{
@@ -54,7 +52,12 @@ void	print_line(unsigned long base, unsigned char *buf, int len)
 			write(1, " ", 1);
 		i++;
 	}
-	write(1, " |", 2);
+}
+
+static void	print_ascii(const unsigned char *buf, int len)
+{
+	int	i;
+
 	i = 0;
 	while (i < len)
 	{
@@ -64,5 +67,14 @@ void	print_line(unsigned long base, unsigned char *buf, int len)
 			write(1, ".", 1);
 		i++;
 	}
+}
+
+void	print_line(unsigned long base, unsigned char *buf, int len)
+{
+	put_hex8(base);
+	write(1, "  ", 2);
+	print_hex_cols(buf, len);
+	write(1, " |", 2);
+	print_ascii(buf, len);
 	write(1, "|\n", 2);
 }
