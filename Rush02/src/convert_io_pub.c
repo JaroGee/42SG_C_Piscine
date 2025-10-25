@@ -1,42 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   str_utils.c                                        :+:      :+:    :+:   */
+/*   convert_io_pub.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgee <mgee@student.42singapore.sg>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/25 14:34:58 by mgee              +#+    #+#             */
-/*   Updated: 2025/10/26 02:00:54 by mgee             ###   ########.fr       */
+/*   Created: 2025/10/26 01:46:52 by mgee              +#+    #+#             */
+/*   Updated: 2025/10/26 01:46:57 by mgee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rush02.h"
 
-void	*ft_memcpy(void *dst, const void *src, int n)
+int	write_space_if_needed(int *need_space)
 {
-	int					i;
-	unsigned char		*d;
-	const unsigned char	*s;
-
-	d = (unsigned char *)dst;
-	s = (const unsigned char *)src;
-	i = 0;
-	while (i < n)
+	if (*need_space)
 	{
-		d[i] = s[i];
-		i++;
+		if (write(1, " ", 1) < 0)
+			return (-1);
 	}
-	return (dst);
+	else
+		*need_space = 1;
+	return (0);
 }
 
-int	ft_putstr(const char *s)
+int	write_word(const char *s)
 {
 	int	len;
 
-	len = 0;
-	while (s && s[len])
-		len++;
-	if (len > 0)
-		write(1, s, len);
-	return (len);
+	if (!s)
+		return (-1);
+	len = ft_strlen(s);
+	if (len < 0)
+		return (-1);
+	if (write(1, s, (size_t)len) < 0)
+		return (-1);
+	return (0);
 }

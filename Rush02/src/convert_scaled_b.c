@@ -1,42 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   str_utils.c                                        :+:      :+:    :+:   */
+/*   convert_scaled_b.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgee <mgee@student.42singapore.sg>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/25 14:34:58 by mgee              +#+    #+#             */
-/*   Updated: 2025/10/26 02:00:54 by mgee             ###   ########.fr       */
+/*   Created: 2025/10/25 23:43:37 by mgee              +#+    #+#             */
+/*   Updated: 2025/10/25 23:51:08 by mgee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rush02.h"
 
-void	*ft_memcpy(void *dst, const void *src, int n)
+int	spell_chunk_with_scale(
+		const t_dict *d, int chunk, const char *scale, int *need_space)
 {
-	int					i;
-	unsigned char		*d;
-	const unsigned char	*s;
-
-	d = (unsigned char *)dst;
-	s = (const unsigned char *)src;
-	i = 0;
-	while (i < n)
+	if (chunk <= 0)
+		return (0);
+	if (spell_hundreds(d, chunk, need_space) != 0)
+		return (1);
+	if (scale)
 	{
-		d[i] = s[i];
-		i++;
+		if (write_space_if_needed(need_space) != 0)
+			return (1);
+		if (write_word(dict_find(d, scale)) != 0)
+			return (1);
 	}
-	return (dst);
-}
-
-int	ft_putstr(const char *s)
-{
-	int	len;
-
-	len = 0;
-	while (s && s[len])
-		len++;
-	if (len > 0)
-		write(1, s, len);
-	return (len);
+	return (0);
 }

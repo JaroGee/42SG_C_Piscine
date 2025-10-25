@@ -1,21 +1,41 @@
-NAME = rush-02
+# ============ Project ============
+NAME    := rush-02
 
-SRC = src/main.c src/str_utils.c src/io_utils.c src/num_validate.c \
-      src/dict_lookup.c src/free_all.c src/convert_main.c
+# ============ Toolchain ==========
+CC      := cc
+CFLAGS  := -Wall -Wextra -Werror -Iincludes
 
-OBJ = $(SRC:.c=.o)
+# ============ Sources / Objects ===
+SRC     := $(wildcard src/*.c)
+OBJS    := $(SRC:.c=.o)
 
-CFLAGS = -Wall -Wextra -Werror -Iincludes
+# ============ Rules ==============
+.PHONY: all clean fclean re run print-vars
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
-	cc $(CFLAGS) $(OBJ) -o $(NAME)
+$(NAME): $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+
+src/%.o: src/%.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -f $(OBJ)
+	rm -f $(OBJS)
 
 fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
+
+# Helper to quickly run a few manual checks after build (optional)
+run: all
+	./$(NAME) 100 || true
+	./$(NAME) 219 || true
+	./$(NAME) 1005 || true
+	./$(NAME) 1234567 || true
+
+# Debug: see what files make found (optional)
+print-vars:
+	@echo "SRC = $(SRC)"
+	@echo "OBJS = $(OBJS)"

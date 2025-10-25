@@ -1,42 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   str_utils.c                                        :+:      :+:    :+:   */
+/*   convert_0_999.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgee <mgee@student.42singapore.sg>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/25 14:34:58 by mgee              +#+    #+#             */
-/*   Updated: 2025/10/26 02:00:54 by mgee             ###   ########.fr       */
+/*   Created: 2025/10/25 23:40:08 by mgee              +#+    #+#             */
+/*   Updated: 2025/10/25 23:40:14 by mgee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rush02.h"
 
-void	*ft_memcpy(void *dst, const void *src, int n)
+int	print_words_0_999(const t_dict *d, int n)
 {
-	int					i;
-	unsigned char		*d;
-	const unsigned char	*s;
+	int	need;
 
-	d = (unsigned char *)dst;
-	s = (const unsigned char *)src;
-	i = 0;
-	while (i < n)
-	{
-		d[i] = s[i];
-		i++;
-	}
-	return (dst);
-}
-
-int	ft_putstr(const char *s)
-{
-	int	len;
-
-	len = 0;
-	while (s && s[len])
-		len++;
-	if (len > 0)
-		write(1, s, len);
-	return (len);
+	need = 0;
+	return (spell_hundreds(d, n, &need));
 }

@@ -1,42 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   str_utils.c                                        :+:      :+:    :+:   */
+/*   convert_scaled_a.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgee <mgee@student.42singapore.sg>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/25 14:34:58 by mgee              +#+    #+#             */
-/*   Updated: 2025/10/26 02:00:54 by mgee             ###   ########.fr       */
+/*   Created: 2025/10/25 23:40:19 by mgee              +#+    #+#             */
+/*   Updated: 2025/10/25 23:51:40 by mgee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rush02.h"
 
-void	*ft_memcpy(void *dst, const void *src, int n)
+const char	*scale_for_group(int group)
 {
-	int					i;
-	unsigned char		*d;
-	const unsigned char	*s;
-
-	d = (unsigned char *)dst;
-	s = (const unsigned char *)src;
-	i = 0;
-	while (i < n)
-	{
-		d[i] = s[i];
-		i++;
-	}
-	return (dst);
-}
-
-int	ft_putstr(const char *s)
-{
-	int	len;
-
-	len = 0;
-	while (s && s[len])
-		len++;
-	if (len > 0)
-		write(1, s, len);
-	return (len);
+	if (group == 1)
+		return ("1000");
+	if (group == 2)
+		return ("1000000");
+	if (group == 3)
+		return ("1000000000");
+	if (group == 4)
+		return ("1000000000000");
+	if (group == 5)
+		return ("1000000000000000");
+	if (group == 6)
+		return ("1000000000000000000");
+	return (0);
 }

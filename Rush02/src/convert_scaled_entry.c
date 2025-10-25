@@ -1,55 +1,54 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   convert_scale.c                                    :+:      :+:    :+:   */
+/*   convert_scaled_entry.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgee <mgee@student.42singapore.sg>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/25 20:39:35 by mgee              +#+    #+#             */
-/*   Updated: 2025/10/25 20:39:38 by mgee             ###   ########.fr       */
+/*   Created: 2025/10/26 01:47:55 by mgee              +#+    #+#             */
+/*   Updated: 2025/10/26 01:58:04 by mgee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rush02.h"
 
-static void	print_scale_word(const t_dict *d, unsigned long long scale)
+static unsigned long long	pow1000(int e)
 {
-	char	key[32];
-	int		i;
-	int		j;
+	unsigned long long	x;
+	int					i;
 
+	x = 1ULL;
 	i = 0;
-	key[i++] = '1';
-	j = 0;
-	while (j < (int)scale)
+	while (i < e)
 	{
-		key[i++] = '0';
-		j++;
+		x *= 1000ULL;
+		i++;
 	}
-	key[i] = '\0';
-	print_word(dict_find(d, key), &(int){1});
+	return (x);
 }
 
 void	print_scaled(const t_dict *d, unsigned long long n)
 {
+	int					group;
+	int					need_space;
 	unsigned long long	div;
 	int					chunk;
 
-	if (n == 0)
+	if (n == 0ULL)
 	{
-		print_word(dict_find(d, "0"), &(int){0});
+		write_word(dict_find(d, "0"));
 		return ;
 	}
-	div = 1000000000000000000ULL;
-	while (div > 0)
+	need_space = 0;
+	group = 0;
+	while (pow1000(group + 1) <= n)
+		group++;
+	while (group >= 0)
 	{
-		chunk = (int)((n / div) % 1000);
+		div = pow1000(group);
+		chunk = (int)((n / div) % 1000ULL);
 		if (chunk)
-		{
-			print_words_0_999(d, chunk);
-			if (div >= 1000ULL)
-				print_scale_word(d, (unsigned long long)ft_scale_zeros(div));
-		}
-		div /= 1000ULL;
+			spell_chunk_with_scale(d, chunk, scale_for_group(group), &need_space);
+		group--;
 	}
 }

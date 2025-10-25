@@ -1,42 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   str_utils.c                                        :+:      :+:    :+:   */
+/*   ft_atoull.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgee <mgee@student.42singapore.sg>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/25 14:34:58 by mgee              +#+    #+#             */
-/*   Updated: 2025/10/26 02:00:54 by mgee             ###   ########.fr       */
+/*   Created: 2025/10/25 23:58:22 by mgee              +#+    #+#             */
+/*   Updated: 2025/10/26 01:51:36 by mgee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rush02.h"
 
-void	*ft_memcpy(void *dst, const void *src, int n)
+/*
+** Simple ASCII -> unsigned long long.
+** Assumes the string contains only digits (your validate_num guards that).
+*/
+unsigned long long	ft_atoull(const char *s)
 {
+	unsigned long long	n;
 	int					i;
-	unsigned char		*d;
-	const unsigned char	*s;
 
-	d = (unsigned char *)dst;
-	s = (const unsigned char *)src;
+	n = 0ULL;
 	i = 0;
-	while (i < n)
+	while (s[i] >= '0' && s[i] <= '9')
 	{
-		d[i] = s[i];
+		n = n * 10ULL + (unsigned long long)(s[i] - '0');
 		i++;
 	}
-	return (dst);
-}
-
-int	ft_putstr(const char *s)
-{
-	int	len;
-
-	len = 0;
-	while (s && s[len])
-		len++;
-	if (len > 0)
-		write(1, s, len);
-	return (len);
+	return (n);
 }

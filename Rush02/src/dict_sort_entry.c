@@ -1,42 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   str_utils.c                                        :+:      :+:    :+:   */
+/*   dict_sort_entry.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgee <mgee@student.42singapore.sg>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/25 14:34:58 by mgee              +#+    #+#             */
-/*   Updated: 2025/10/26 02:00:54 by mgee             ###   ########.fr       */
+/*   Created: 2025/10/26 01:47:12 by mgee              +#+    #+#             */
+/*   Updated: 2025/10/26 01:47:15 by mgee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rush02.h"
 
-void	*ft_memcpy(void *dst, const void *src, int n)
+static void	swap_pairs(t_pair *a, t_pair *b)
 {
-	int					i;
-	unsigned char		*d;
-	const unsigned char	*s;
+	t_pair	tmp;
 
-	d = (unsigned char *)dst;
-	s = (const unsigned char *)src;
-	i = 0;
-	while (i < n)
-	{
-		d[i] = s[i];
-		i++;
-	}
-	return (dst);
+	tmp = *a;
+	*a = *b;
+	*b = tmp;
 }
 
-int	ft_putstr(const char *s)
+void	sort_pairs(t_dict *d)
 {
-	int	len;
+	int	i;
+	int	j;
 
-	len = 0;
-	while (s && s[len])
-		len++;
-	if (len > 0)
-		write(1, s, len);
-	return (len);
+	if (!d || d->size <= 1)
+		return ;
+	i = 0;
+	while (i < d->size - 1)
+	{
+		j = 0;
+		while (j < d->size - 1 - i)
+		{
+			if (ft_strcmp(d->pairs[j].key, d->pairs[j + 1].key) > 0)
+				swap_pairs(&d->pairs[j], &d->pairs[j + 1]);
+			j++;
+		}
+		i++;
+	}
 }

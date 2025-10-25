@@ -1,42 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   str_utils.c                                        :+:      :+:    :+:   */
+/*   print_words.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgee <mgee@student.42singapore.sg>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/25 14:34:58 by mgee              +#+    #+#             */
-/*   Updated: 2025/10/26 02:00:54 by mgee             ###   ########.fr       */
+/*   Created: 2025/10/26 01:47:33 by mgee              +#+    #+#             */
+/*   Updated: 2025/10/26 01:47:36 by mgee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rush02.h"
 
-void	*ft_memcpy(void *dst, const void *src, int n)
+int	print_words(const t_dict *d, const char *digits)
 {
-	int					i;
-	unsigned char		*d;
-	const unsigned char	*s;
+	unsigned long long	n;
 
-	d = (unsigned char *)dst;
-	s = (const unsigned char *)src;
-	i = 0;
-	while (i < n)
-	{
-		d[i] = s[i];
-		i++;
-	}
-	return (dst);
-}
-
-int	ft_putstr(const char *s)
-{
-	int	len;
-
-	len = 0;
-	while (s && s[len])
-		len++;
-	if (len > 0)
-		write(1, s, len);
-	return (len);
+	if (!digits || !*digits)
+		return (-1);
+	if (validate_num(digits) != 0)
+		return (-1);
+	n = ft_atoull(digits);
+	if (n < 1000ULL)
+		return (print_words_0_999(d, (int)n));
+	print_scaled(d, n);
+	return (0);
 }
