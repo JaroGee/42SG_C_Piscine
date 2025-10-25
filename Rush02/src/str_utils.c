@@ -6,48 +6,23 @@
 /*   By: mgee <mgee@student.42singapore.sg>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/25 14:34:58 by mgee              +#+    #+#             */
-/*   Updated: 2025/10/25 14:39:48 by mgee             ###   ########.fr       */
+/*   Updated: 2025/10/25 22:09:01 by mgee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rush02.h"
 
-int	ft_strlen(const char *s)
+void	*ft_memcpy(void *dst, const void *src, int n)
 {
 	int	i;
 
 	i = 0;
-	while (s[i])
-		i++;
-	return (i);
-}
-
-int	ft_strcmp(const char *a, const char *b)
-{
-	int	i;
-
-	i = 0;
-	while (a[i] && a[i] == b[i])
-		i++;
-	return ((unsigned char)a[i] - (unsigned char)b[i]);
-}
-
-char	*ft_strdup(const char *s)
-{
-	int		len;
-	char	*copy;
-	int		i;
-
-	len = ft_strlen(s);
-	copy = malloc(len + 1);
-	if (!copy)
-		return (NULL);
-	i = 0;
-	while (s[i])
+	while (i < n)
 	{
-		copy[i] = s[i];
+		((unsigned char *)dst)[i] = ((const unsigned char *)src)[i];
 		i++;
 	}
-	copy[i] = '\0';
-	return (copy);
+	return (dst);
 }
+
+/* keep your ft_strlen / ft_strcmp / ft_strdup as you have them */

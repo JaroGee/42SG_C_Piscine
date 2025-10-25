@@ -1,27 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   num_validate.c                                     :+:      :+:    :+:   */
+/*   convert_io.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgee <mgee@student.42singapore.sg>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/25 14:34:58 by mgee              +#+    #+#             */
-/*   Updated: 2025/10/25 20:40:33 by mgee             ###   ########.fr       */
+/*   Created: 2025/10/25 20:39:09 by mgee              +#+    #+#             */
+/*   Updated: 2025/10/25 20:39:12 by mgee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rush02.h"
+#include <unistd.h>
 
-int	validate_num(const char *s)
+static void	putspace(void)
 {
-	int	i;
+	write(1, " ", 1);
+}
 
-	i = 0;
-	while (s[i])
-	{
-		if (s[i] < '0' || s[i] > '9')
-			return (1);
-		i++;
-	}
-	return (i == 0);
+void	print_word(const char *s, int *need_space)
+{
+	if (!s || !*s)
+		return ;
+	if (*need_space)
+		putspace();
+	ft_putstr(s);
+	*need_space = 1;
 }
