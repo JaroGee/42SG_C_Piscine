@@ -1,0 +1,176 @@
+# INSTRUCTION MANUAL — OPERATING THE PROGRAM (SEPARATE FROM README)
+
+	A) Inputs and command forms
+
+
+		1.	Using the default dictionary file
+
+			Command: rush-02 12345
+			Behavior: Loads dicts/numbers.dict, validates “12345”,
+			prints “twelve thousand three hundred forty five”
+			(based on your dictionary’s wording).
+
+
+		2.	Using a custom dictionary
+
+			Command: rush-02 path/to/my.dict 7000001
+			Behavior: Loads the given file and uses its wording.
+			If your dictionary defines “and” usage or hyphenation,
+			the output reflects that.
+
+
+		3.	What the dictionary must look like
+
+			Format: one mapping per line
+			Example lines:
+			0: zero
+			1: one
+			10: ten
+			11: eleven
+			20: twenty
+			100: hundred
+			1000: thousand
+			1000000: million
+
+
+	Notes:
+	• Only the first colon splits key and value.
+
+	• Keys must be digits only; values are arbitrary non-empty text (trimmed).
+
+	• Extra spaces around keys and values are allowed; trim_spaces removes them.
+
+	• Empty lines or lines without a colon are ignored.
+
+
+
+	B) What happens internally when you run it
+
+		1.	Argument parsing (main.c)
+
+			• If 1 argument: number only → use default dictionary path.
+
+			• If 2 arguments: first is dictionary path, second is number.
+
+			• Otherwise: print usage and exit non-zero.
+
+
+		2.	Load dictionary (parse_dict.c)
+
+			• slurp reads the file into memory.
+
+			• pass1_count_pairs counts colon-bearing lines.
+
+			• Allocate t_pair[count].
+
+			• parse_lines_into_pairs fills pairs with ft_strdup’d key/val strings.
+
+			• sort_pairs orders them (deterministic searches and predictable output).
+
+			• On any failure, memory is freed and the program exits with error.
+
+
+		3.	Validate number (num_validate.c)
+
+			• Reject empty strings, non-digits, or numerically invalid formats you defined.
+
+			• If invalid: free dict and exit with error.
+
+
+		4.	Convert to words (convert_main.c and helpers)
+
+			• Special case “0” prints value of key “0”.
+
+			• Split digits from right into chunks of 3 (groups).
+
+			• For each group from most significant to least:
+
+				– If group is non-zero:
+
+				· spell_hundreds handles 1–999 inside the group.
+
+				· scale_for_group returns thousand/million/billion for group index.
+
+				· spell_chunk_with_scale appends the scale term (except for group 0).
+
+			• Spacing handled via write_space_if_needed so there are no extra spaces.
+		
+
+		5.	Cleanup (free_all.c)
+
+			• free_dict frees all duplicated strings and the array.
+
+
+	C) Expected outputs and errors
+
+			• On success: the words are written to stdout followed by a newline (depending on your implementation).
+
+			• On dictionary I/O or parse error: an error message (if you print one) and non-zero exit.
+
+			• On invalid number: non-zero exit and possibly a message like “Error”.
+
+
+	D) Extending or changing behavior
+			
+			• Different “and” rules (e.g., British “one hundred and five”):
+			  implement an optional insert of “and” inside spell_hundreds when remainder exists;
+			  add dictionary key for “and” if you want to make it data-driven.
+			
+			• Hyphenation (twenty-one):
+			  either keep as dictionary values (e.g., 21: twenty-one) or implement logic
+			  in spell_two to output “twenty one” or “twenty-one” based on a flag.
+
+			• Larger scales: add keys and values in the dictionary
+			  (1000000000: billion, 1000000000000: trillion, etc.)
+			  and ensure scale_for_group maps them.
+
+
+	E) Testing checklist
+
+			• Small numbers: 0..20, tens, mixed 2-digit (21, 34, 99).
+
+			• Hundreds: 100, 101, 110, 115, 342, 900.
+
+			• Thousands+: 1,000; 10,005; 105,000; 1,234,567.
+
+			• Very large: multiple groups, e.g., 987,654,321,000.
+
+			• Dictionary edge cases: lines with extra spaces, empty lines,
+			  missing lines for required keys (the output should still be predictable,
+			  but missing keys will lead to lookup failures if your converter requires them).
+
+
+	F) Troubleshooting
+
+			• Norminette: keep functions ≤25 lines, declare vars at block start, avoid ternaries/for,
+			  keep line length ≤80, and indent with tabs.
+			
+			• Undefined symbol errors at link time: ensure every function declared in rush02.h has
+			  exactly one definition compiled into the target.
+
+			• “call to undeclared function”: include rush02.h in any .c using the function;
+			  ensure prototypes match (e.g., ft_strlen returns int in this project).
+			
+			• Empty or weird output: confirm dict_find returns non-NULL for all keys used
+			  during conversion; verify dictionary contains required scale words and 0–19
+			  and tens keys as needed.
+			
+			• Memory: if parse fails mid-way, parse_dict already frees; on success paths,
+			  always call free_dict before exiting main.
+
+
+	G) Minimal operator workflow
+
+			1.	Place your dictionary at dicts/numbers.dict or pass a custom path on the command line.
+
+			2.	Build with make re.
+
+			3.	Run: rush-02 123456 or rush-02 my.dict 123456.
+
+			4.	If you modify parsing or conversion, rerun Norminette and make re.
+
+			5.	Commit early and often; test with a suite of representative inputs.
+
+
+	If you’d like, I can also generate a printable quick-reference (one page) with the exact keys your dictionary
+	should contain for full 64-bit coverage, or tailor the converter for British “and” rules or hyphenation on demand.
