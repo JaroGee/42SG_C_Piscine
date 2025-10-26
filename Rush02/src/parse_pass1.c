@@ -6,43 +6,42 @@
 /*   By: mgee <mgee@student.42singapore.sg>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/25 20:39:43 by mgee              +#+    #+#             */
-/*   Updated: 2025/10/25 22:01:32 by mgee             ###   ########.fr       */
+/*   Updated: 2025/10/26 02:24:55 by mgee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rush02.h"
 
-static int	has_colon(char *line)
-{
-	int	i;
-
-	i = 0;
-	while (line[i] && line[i] != '\n')
-	{
-		if (line[i] == ':')
-			return (1);
-		i++;
-	}
-	return (0);
-}
-
+/*
+** Count only lines that look like "something:something"
+** - Handles files without trailing '\n'
+** - Skips blank lines and lines without a colon
+*/
 int	pass1_count_pairs(char *buf)
 {
 	int	i;
-	int	count;
 	int	start;
+	int	has_colon;
+	int	count;
 
 	i = 0;
+	start = 0;
+	has_colon = 0;
 	count = 0;
 	while (buf[i])
 	{
-		start = i;
-		while (buf[i] && buf[i] != '\n')
-			i++;
-		if (has_colon(&buf[start]))
-			count++;
+		if (buf[i] == ':')
+			has_colon = 1;
 		if (buf[i] == '\n')
-			i++;
+		{
+			if (i > start && has_colon)
+				count++;
+			start = i + 1;
+			has_colon = 0;
+		}
+		i++;
 	}
+	if (i > start && has_colon)
+		count++;
 	return (count);
 }

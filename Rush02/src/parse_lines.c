@@ -6,55 +6,43 @@
 /*   By: mgee <mgee@student.42singapore.sg>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/25 20:39:55 by mgee              +#+    #+#             */
-/*   Updated: 2025/10/26 02:16:08 by mgee             ###   ########.fr       */
+/*   Updated: 2025/10/26 04:01:52 by mgee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rush02.h"
 
-static int	split_colon(char *line, char **key, char **val)
+static int	add_pair(const char *k, const char *v, t_dict *out, int idx)
 {
-	int	i;
-
-	i = 0;
-	while (line[i] && line[i] != ':')
-		i++;
-	if (!line[i])
+	if (!*k || !*v)
 		return (0);
-	line[i] = '\0';
-	*key = trim_spaces(line);
-	*val = trim_spaces(line + i + 1);
-	if (!**key || !**val)
-		return (0);
+	out->pairs[idx].key = ft_strdup(k);
+	out->pairs[idx].val = ft_strdup(v);
+	if (!out->pairs[idx].key || !out->pairs[idx].val)
+		return (-1);
 	return (1);
 }
 
-static int	store_line(char *line, t_dict *out, int *pidx)
+static int	handle_line(char *s, t_dict *out, int *pidx)
 {
+	int		i;
 	char	*key;
 	char	*val;
-	int		rc;
+	int		st;
 
-	rc = split_colon(line, &key, &val);
-	if (rc < 0)
-		return (-1);
-	if (rc == 0)
+	i = 0;
+	while (s[i] && s[i] != ':')
+		i++;
+	if (!s[i])
 		return (0);
-	out->pairs[*pidx].key = ft_strdup(key);
-	out->pairs[*pidx].val = ft_strdup(val);
-	if (!out->pairs[*pidx].key || !out->pairs[*pidx].val)
+	s[i] = '\0';
+	key = trim_spaces(s);
+	val = trim_spaces(s + i + 1);
+	st = add_pair(key, val, out, *pidx);
+	if (st < 0)
 		return (-1);
-	(*pidx)++;
-	return (1);
-}
-
-static int	flush_segment(char *seg, t_dict *out, int *pidx)
-{
-	int	rc;
-
-	rc = store_line(seg, out, pidx);
-	if (rc < 0)
-		return (-1);
+	if (st > 0)
+		(*pidx)++;
 	return (0);
 }
 
@@ -72,14 +60,13 @@ int	parse_lines_into_pairs(char *buf, t_dict *out)
 		if (buf[i] == '\n')
 		{
 			buf[i] = '\0';
-			if (flush_segment(buf + start, out, &idx) < 0)
+			if (handle_line(buf + start, out, &idx) < 0)
 				return (-1);
 			start = i + 1;
 		}
 		i++;
 	}
-	if (start < i && flush_segment(buf + start, out, &idx) < 0)
+	if (start < i && handle_line(buf + start, out, &idx) < 0)
 		return (-1);
-	out->size = idx;
-	return (0);
+	return (idx);
 }
