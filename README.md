@@ -27,7 +27,7 @@ It’s tough, intense, and oddly addictive once you get into the flow.
 
 
 ```
-├── Shell00/
+├── Shell00/ 
 ├── Shell01/
 │
 ├── C00/
@@ -44,10 +44,6 @@ It’s tough, intense, and oddly addictive once you get into the flow.
 ├── C11/
 ├── C12/
 ├── C13/
-│
-├── Rush00/
-├── Rush01/
-├── Rush02/
 │
 └── README.md
 ```  
