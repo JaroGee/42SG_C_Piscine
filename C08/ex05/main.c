@@ -5,32 +5,28 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgee <mgee@student.42singapore.sg>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/25 14:34:57 by mgee              +#+    #+#             */
-/*   Updated: 2025/10/26 01:23:00 by mgee             ###   ########.fr       */
+/*   Created: 2025/10/27 03:01:36 by mgee              +#+    #+#             */
+/*   Updated: 2025/10/27 03:01:36 by mgee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rush02.h"
+// main.c (not to be submitted)
+#include <stdlib.h>
+#include "ft_stock_str.h"
 
-static int	run_with_dict(const char *dict_path, const char *num)
+t_stock_str *ft_strs_to_tab(int ac, char **av);
+void        ft_show_tab(struct s_stock_str *par);
+
+int main(int ac, char **av)
 {
-	t_dict	d;
-
-	if (parse_dict(dict_path, &d))
-		return (write(1, "Dict Error\n", 11), 1);
-	if (validate_num(num))
-		return (write(1, "Error\n", 6), free_dict(&d), 1);
-	print_words(&d, num);
-	free_dict(&d);
-	return (0);
+	t_stock_str *tab = ft_strs_to_tab(ac - 1, av + 1);
+	if (!tab) return 1;
+	ft_show_tab(tab);
+	// free copies
+	for (int i = 0; tab[i].str; i++) free(tab[i].copy);
+	free(tab);
+	return 0;
 }
 
-int	main(int argc, char **argv)
-{
-	if (argc == 2)
-		return (run_with_dict("dicts/numbers.dict", argv[1]));
-	else if (argc == 3)
-		return (run_with_dict(argv[1], argv[2]));
-	write(1, "Error\n", 6);
-	return (1);
-}
+// cc -Wall -Wextra -Werror ft_strs_to_tab.c ft_show_tab.c main.c -o test
+// ./test hello "42 SG" rabak
