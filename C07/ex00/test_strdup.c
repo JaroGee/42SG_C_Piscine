@@ -6,7 +6,7 @@
 /*   By: mgee <mgee@student.42singapore.sg>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/25 02:10:34 by mgee              +#+    #+#             */
-/*   Updated: 2025/10/27 19:57:58 by mgee             ###   ########.fr       */
+/*   Updated: 2025/10/27 20:55:04 by mgee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	main(void)
 	dup = ft_strdup(src3);
 	printf("src : %s\n", src3);
 	printf("copy: %s\n", dup);
-	free(dup);
+	free(dup
 
 	return (0);
 }

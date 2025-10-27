@@ -6,7 +6,7 @@
 /*   By: mgee <mgee@student.42singapore.sg>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/25 01:42:33 by mgee              +#+    #+#             */
-/*   Updated: 2025/10/25 02:11:50 by mgee             ###   ########.fr       */
+/*   Updated: 2025/10/27 20:55:04 by mgee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	ft_ultimate_range(int **range, int min, int max)
 {
 	int	size;
-	int	i;
+	int	i;2
 
 	if (min >= max)
 	{
