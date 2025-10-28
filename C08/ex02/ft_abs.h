@@ -6,13 +6,13 @@
 /*   By: mgee <mgee@student.42singapore.sg>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/25 01:42:47 by mgee              +#+    #+#             */
-/*   Updated: 2025/10/25 02:43:36 by mgee             ###   ########.fr       */
+/*   Updated: 2025/10/28 22:26:39 by mgee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_ABS_H
 # define FT_ABS_H
 
-int	ft_abs(int value);
+# define ABS(Value) ((Value) < 0 ? -(Value) : (Value))
 
 #endif
