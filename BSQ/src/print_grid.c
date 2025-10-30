@@ -1,33 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_rev_params.c                                    :+:      :+:    :+:   */
+/*   print_grid.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgee <mgee@student.42singapore.sg>         +#+  +:+       +#+        */
+/*   By: ying <ying@student.42singapore.sg>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/25 01:42:26 by mgee              +#+    #+#             */
-/*   Updated: 2025/10/29 00:07:57 by mgee             ###   ########.fr       */
+/*   Created: 2025/10/28 01:28:33 by ying              #+#    #+#             */
+/*   Updated: 2025/10/28 01:53:13 by ying             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "print_grid.h"
 
-void	ft_putstr(char *s)
-{
-	while (*s)
-		write(1, s++, 1);
-}
-
-int	main(int argc, char **argv)
+void	print_grid(t_map	*map)
 {
 	int	i;
 
-	i = argc - 1;
-	while (i >= 1)
+	i = 0;
+	while (i < map->row)
 	{
-		ft_putstr(argv[i]);
-		write(1, "\n", 1);
-		i--;
+		ft_putstr(map->map[i]);
+		ft_putstr("\n");
+		i++;
 	}
-	return (0);
 }

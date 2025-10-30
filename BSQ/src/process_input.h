@@ -1,33 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_rev_params.c                                    :+:      :+:    :+:   */
+/*   process_input.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgee <mgee@student.42singapore.sg>         +#+  +:+       +#+        */
+/*   By: ying <ying@student.42singapore.sg>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/25 01:42:26 by mgee              +#+    #+#             */
-/*   Updated: 2025/10/29 00:07:57 by mgee             ###   ########.fr       */
+/*   Created: 2025/10/27 12:39:04 by ying              #+#    #+#             */
+/*   Updated: 2025/10/28 01:58:16 by ying             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#pragma once
 
-void	ft_putstr(char *s)
-{
-	while (*s)
-		write(1, s++, 1);
-}
+#include <stdlib.h>
+#include "util_1.h"
+#include "print_grid.h"
+#include "solve.h"
 
-int	main(int argc, char **argv)
-{
-	int	i;
-
-	i = argc - 1;
-	while (i >= 1)
-	{
-		ft_putstr(argv[i]);
-		write(1, "\n", 1);
-		i--;
-	}
-	return (0);
-}
+void	ft_process_map(char *map);

@@ -1,33 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_rev_params.c                                    :+:      :+:    :+:   */
+/*   aff_a.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgee <mgee@student.42singapore.sg>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/25 01:42:26 by mgee              +#+    #+#             */
-/*   Updated: 2025/10/29 00:07:57 by mgee             ###   ########.fr       */
+/*   Created: 2025/10/29 20:32:14 by mgee              +#+    #+#             */
+/*   Updated: 2025/10/30 11:34:10 by mgee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	ft_putstr(char *s)
-{
-	while (*s)
-		write(1, s++, 1);
-}
-
 int	main(int argc, char **argv)
 {
-	int	i;
+int i;
+i = 0;
 
-	i = argc - 1;
-	while (i >= 1)
-	{
-		ft_putstr(argv[i]);
-		write(1, "\n", 1);
-		i--;
-	}
-	return (0);
+if (argc != 2)
+{
+    write(1, "a\n", 2);
+}
+else
+{
+    i = 0;
+    while (argv[1][i])
+    {
+        if (argv[1][i] == 'a')
+        {
+            write(1, "a", 1);
+            return (0);
+        }
+        i++;
+    }
+    write(1, "\n", 1);
+}
+return (0);
 }

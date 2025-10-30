@@ -6,13 +6,13 @@
 /*   By: mgee <mgee@student.42singapore.sg>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/25 01:42:22 by mgee              +#+    #+#             */
-/*   Updated: 2025/10/25 01:55:17 by mgee             ###   ########.fr       */
+/*   Updated: 2025/10/29 00:08:19 by mgee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-static void	ft_putstr(char *s)
+void	ft_putstr(char *s)
 {
 	while (*s)
 		write(1, s++, 1);
