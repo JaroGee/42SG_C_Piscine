@@ -20,8 +20,11 @@ void	ft_swap(int *a, int *b);
 
 int	main(void)
 {
-	int	a = 1, b = 2;
+	int	a;
+	int	b;
 
+	a = 1;
+	b = 2;
 	ft_putstr("Hello\n");
 	ft_putchar('X');
 	ft_putchar('\n');
