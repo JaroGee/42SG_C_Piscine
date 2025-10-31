@@ -12,19 +12,26 @@
 
 #include "process_input.h"
 
-int	ft_process_header(t_map *map, char *raw_map, int size)
+static int	ft_process_header(t_map *map, char *raw_map, int size)
 {
 	int		i;
 	char	*header;
 
 	i = 0;
+	if (size < 4)
+		return (0);
 	header = (char *)malloc((size + 1) * sizeof(char));
+	if (!header)
+		return (0);
 	header[size] = '\0';
 	while (i < size)
 	{
 		header[i] = *raw_map;
 		if (i == size - 3 && *raw_map >= '0' && *raw_map <= '9')
+		{
+			free(header);
 			return (0);
+		}
 		raw_map++;
 		i++;
 	}
@@ -32,7 +39,15 @@ int	ft_process_header(t_map *map, char *raw_map, int size)
 	if (header[size - 1] == header[size - 3]
 		|| header[size - 2] == header[size - 3]
 		|| header[size - 1] == header[size - 2])
+	{
+		free(header);
 		return (0);
+	}
+	if (map->row <= 0)
+	{
+		free(header);
+		return (0);
+	}
 	map->empty = header[size - 3];
 	map->obstacle = header[size - 2];
 	map->full = header[size - 1];
@@ -40,22 +55,33 @@ int	ft_process_header(t_map *map, char *raw_map, int size)
 	return (map->row);
 }
 
-void	ft_map_row_init(t_map *map, int size)
+static void	ft_map_row_init(t_map *map, int size)
 {
 	char	**map_row;
+	int		i;
 
 	map->column = size;
+	if (map->row <= 0)
+	{
+		map->map = NULL;
+		return ;
+	}
 	map_row = (char **)malloc((map->row) * sizeof(char *));
 	if (!map_row)
 	{
-		free(map_row);
 		map->map = NULL;
 		return ;
+	}
+	i = 0;
+	while (i < map->row)
+	{
+		map_row[i] = NULL;
+		i++;
 	}
 	map->map = map_row;
 }
 
-int	ft_process_map_row(t_map *map, char *raw_map, int size, int curr_row)
+static int	ft_process_map_row(t_map *map, char *raw_map, int size, int curr_row)
 {
 	int		i;
 	char	*map_col;
@@ -67,13 +93,19 @@ int	ft_process_map_row(t_map *map, char *raw_map, int size, int curr_row)
 		return (0);
 	map_col = (char *)malloc((size + 1) * sizeof(char));
 	if (!map_col || map->column != size)
+	{
+		free(map_col);
 		return (0);
+	}
 	map_col[size] = '\0';
 	while (i < size)
 	{
 		map_col[i] = *raw_map;
 		if (!(raw_map[0] == map->empty || raw_map[0] == map->obstacle))
+		{
+			free(map_col);
 			return (0);
+		}
 		raw_map++;
 		i++;
 	}
@@ -83,29 +115,42 @@ int	ft_process_map_row(t_map *map, char *raw_map, int size, int curr_row)
 
 t_map	*ft_extract_map(char *raw_map)
 {
-	int		i;
 	int		next_line;
 	int		row_size;
 	int		col_size;
 	t_map	*map;
+	int		i;
 
 	i = 0;
-	row_size = 1;
-	col_size = 1;
 	map = (t_map *)malloc(sizeof(t_map));
 	if (map == NULL)
 		return (NULL);
-	while (*raw_map && i <= row_size)
+	map->map = NULL;
+	row_size = 0;
+	col_size = 0;
+	while (*raw_map)
 	{
 		next_line = ft_strlen_d(raw_map, "\n");
 		if (i == 0)
 			row_size = ft_process_header(map, raw_map, next_line);
-		else
+		else if (i <= map->row)
 			col_size = ft_process_map_row(map, raw_map, next_line, i - 1);
-		if (row_size < 1 || col_size < 1)
+		else
+			break ;
+		if (row_size < 1 || (i > 0 && col_size < 1))
+		{
+			ft_free_map(map);
 			return (NULL);
-		raw_map = raw_map + next_line + 1;
+		}
+		raw_map = raw_map + next_line;
+		if (*raw_map == '\n')
+			raw_map++;
 		i++;
+	}
+	if (i - 1 != map->row || !map->map || *raw_map != '\0')
+	{
+		ft_free_map(map);
+		return (NULL);
 	}
 	return (map);
 }

@@ -9,7 +9,7 @@ This repository contains my solutions and progress during the 42 Singapore Pisci
 
 ## About
 
-
+- **Username:** Mgee
 - **School:** 42 Singapore @ SUTD  
 - **Run:** 8  
 - **Duration:** 06 October 2025 – 31 October 2025  
@@ -200,6 +200,35 @@ cc -Wall -Wextra -Werror ft_exercise.c
 
 ---
 
+
+## Scores
+
+- **BSQ:** 50% (Teammate: Ying)
+- **C00:** 60%
+- **C01:** 100%
+- **C02:** 97%
+- **C03:** 100%
+- **C04:** 85%
+- **C05:** 60%
+- **C06:** 100%
+- **C07:** 100%
+- **C08:** 100%
+- **C09:** 100%
+- **C10:** Did Not Attempt
+- **C11:** Did Not Attempt
+- **C12:** Did Not Attempt
+- **C13:** Did Not Attempt
+
+- **Shell00:** 100%
+- **Shell01:** 92%
+- **Rush 00:** 120% (Teammates: Mmanojku, Mmoe-thu)
+- **Rush 01:** 0%
+- **Rush 02:** 0%
+
+- **Exam 00:** 10%
+- **Exam 01:** Late
+- **Exam 02:** 0%
+- **Exam Final:** 6%
 
 ## Final Note
 

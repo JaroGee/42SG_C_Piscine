@@ -6,7 +6,7 @@
 /*   By: mgee <mgee@student.42singapore.sg>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/21 10:52:19 by mgee              +#+    #+#             */
-/*   Updated: 2025/10/21 11:02:12 by mgee             ###   ########.fr       */
+/*   Updated: 2025/10/31 01:13:49 by mgee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	ft_print_comb2(void)
 	}
 }
 
-/* #include <unistd.h>
+#include <unistd.h>
 
 void	ft_print_comb2(void);
 
@@ -57,4 +57,3 @@ int	main(void)
 	write(1, "\n", 1);
 	return (0);
 }
-*/
