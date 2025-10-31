@@ -1,7 +1,7 @@
 # 42 Singapore Piscine — Jaro Gee
 
 
-This repository contains my solutions and progress during the 42 Singapore Piscine.
+This repository contains my solutions and final scores during the 42 Singapore Piscine.
 
 
 ---
@@ -47,21 +47,6 @@ It’s tough, intense, and oddly addictive once you get into the flow.
 │
 └── README.md
 ```  
-
-
----
-
-
-## How to Compile
-
-
-Use this command when testing your code:
-
-```bash
-cc -Wall -Wextra -Werror ft_exercise.c
-```
-*These flags are strict but they’ll save you from subtle mistakes later.*
-
 
 ---
 
@@ -186,21 +171,6 @@ cc -Wall -Wextra -Werror ft_exercise.c
 ---
 
 
-## Author
-
-
-   - **Name:** Jaro Gee
-
-   - **Piscine Run:** 8
-
-   - **Based in:** Singapore
-
-   Currently learning C, surviving on coffee, and building momentum.
-
-
----
-
-
 ## Scores
 
 - **BSQ:** 50% (Teammate: Ying)
@@ -230,9 +200,29 @@ cc -Wall -Wextra -Werror ft_exercise.c
 - **Exam 02:** 0%
 - **Exam Final:** 6%
 
+
+---
+
+
 ## Final Note
 
 
    - This repo is a snapshot of my learning journey at 42 Singapore.
 
    - It’s not meant to be a perfect reference. Just a record of progress, mistakes, and lessons along the way.
+
+
+---
+
+
+## Author
+
+
+   - **Name:** Jaro Gee
+
+   - **Piscine Run:** 8
+
+   - **Based in:** Singapore
+
+   Currently learning C, surviving on coffee, and building momentum.
+
