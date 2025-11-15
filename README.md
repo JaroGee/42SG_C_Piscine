@@ -226,3 +226,7 @@ It’s tough, intense, and oddly addictive once you get into the flow.
 
    Currently learning C, surviving on coffee, and building momentum.
 
+
+## Runbook
+
+See [hawkerboys_app/README.md](hawkerboys_app/README.md) for setup and deployment instructions.
